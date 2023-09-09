@@ -1,18 +1,32 @@
 # ETL_Pipeline
 ## 1. import requests & import JSON
-This Python script interacts with the Pokémon API to retrieve information about the character "Pikachu" and then formats and prints this data in a readable JSON format. Let's break down the script step by step:
+This script is a Python program that uses the requests and json libraries to retrieve data from the Pokémon API and extract information about Pikachu.
 
-import requests and import json: These lines import the necessary Python modules. The requests module is used to send HTTP requests, while the json module is used for working with JSON data.
+The first two lines of the script import the requests and json libraries, which are used to make HTTP requests and work with JSON data, respectively.
 
-response = requests.get('https://pokeapi.co/api/v2/pokemon/pikachu'): This line sends an HTTP GET request to the URL "https://pokeapi.co/api/v2/pokemon/pikachu," which is an API endpoint for retrieving data about the Pokémon character "Pikachu." The response from the API is stored in the response variable.
+The next block of code makes a GET request to the Pokémon API’s endpoint for Pikachu using the requests.get() method. The response from the API is stored in the response variable.
 
-data = response.json(): This line extracts the JSON data from the API response and parses it into a Python dictionary, which is stored in the data variable. This dictionary contains various attributes and statistics about Pikachu.
+The response.json() method is then called to parse the JSON data returned by the API and store it in the data variable.
 
-pokedata = {...}: This section of the script creates a new dictionary called pokedata to structure and format the data retrieved from the API. It includes the following information:
+Next, a dictionary called pokedata is created to store information about Pikachu. The dictionary has two keys: 'name' and 'stats'. The value of the 'name' key is set to the value of the 'name' key in the data dictionary, which contains Pikachu’s name.
 
-'name': Pikachu's name is directly taken from the data dictionary.
-'stats': This is a nested dictionary that stores Pikachu's statistics. It uses a dictionary comprehension to iterate through the "stats" section of the data dictionary, extracting each statistic's name (e.g., "hp," "attack") and its base value.
-print(json.dumps(pokedata, indent=2)): Finally, this line uses the json.dumps() method to convert the pokedata dictionary into a nicely formatted JSON string. The indent=2 argument specifies that the JSON should be indented by 2 spaces, making it more human-readable. The formatted JSON data is then printed to the console.
+The value of the 'stats' key is set using a dictionary comprehension. The comprehension iterates over the list of stats in the data['stats'] key, and for each stat, it creates a key-value pair where the key is the name of the stat (found in s['stat']['name']) and the value is the base stat (found in s['base_stat']). This creates a dictionary of Pikachu’s stats where each key is the name of a stat and its value is Pikachu’s base stat for that stat.
 
-So, in summary, this script fetches data about Pikachu from the Pokémon API, extracts relevant information, structures it into a dictionary, and then formats and prints that data in a readable JSON format.
+Finally, the script uses the json.dumps() method to convert the pokedata dictionary into a JSON-formatted string with an indentation of 2 spaces. This string is then printed to the console.
+
+Overall, this script retrieves data from the Pokémon API about Pikachu, extracts its name and stats, and prints this information in a nicely formatted JSON string. Is there anything else you would like to know?This script is a Python program that uses the requests and json libraries to retrieve data from the Pokémon API and extract information about Pikachu.
+
+The first two lines of the script import the requests and json libraries, which are used to make HTTP requests and work with JSON data, respectively.
+
+The next block of code makes a GET request to the Pokémon API’s endpoint for Pikachu using the requests.get() method. The response from the API is stored in the response variable.
+
+The response.json() method is then called to parse the JSON data returned by the API and store it in the data variable.
+
+Next, a dictionary called pokedata is created to store information about Pikachu. The dictionary has two keys: 'name' and 'stats'. The value of the 'name' key is set to the value of the 'name' key in the data dictionary, which contains Pikachu’s name.
+
+The value of the 'stats' key is set using a dictionary comprehension. The comprehension iterates over the list of stats in the data['stats'] key, and for each stat, it creates a key-value pair where the key is the name of the stat (found in s['stat']['name']) and the value is the base stat (found in s['base_stat']). This creates a dictionary of Pikachu’s stats where each key is the name of a stat and its value is Pikachu’s base stat for that stat.
+
+Finally, the script uses the json.dumps() method to convert the pokedata dictionary into a JSON-formatted string with an indentation of 2 spaces. This string is then printed to the console.
+
+Overall, this script retrieves data from the Pokémon API about Pikachu, extracts its name and stats, and prints this information in a nicely formatted JSON string. Is there anything else you would like to know?
 
